@@ -1,0 +1,59 @@
+相关资料地址
+1,https://www.zego.im/（即构科技）
+2,https://www.toutiao.com/i6485573996707316237/?tt_from=weixin&utm_campaign=client_share&app=news_article&utm_source=weixin&iid=16499481634&utm_medium=toutiao_android&wxshare_count=4&pbid=6430987738506298881&from=groupmessage&isappinstalled=0 (腾讯云)
+3,https://mp.weixin.qq.com/s/VL7c03M2mXOJon-2UNDebA (声网)
+4,http://s4.uczzd.cn/webapp/webview/article/news.html?app=smds-iflow&aid=10253726236784278982&cid=0&zzd_from=smds-iflow&uc_param_str=dndseiwifrvesvntgipf&rd_type=share&pagetype=share&btifl=100&sdkdeep=2&sdksid=855aada1-1090-2ea3-d28a-5d7b91ce6d23&sdkoriginal=855aada1-1090-2ea3-d28a-5d7b91ce6d23
+
+4，直播平台如何使用RTMP实现视频直播低延迟（即构科技）
+https://zhuanlan.zhihu.com/p/24606221
+
+5，移动平台推流拉流技术概述
+http://www.jianshu.com/p/b520c2a9b795
+
+6，视频直播技术详解之推流和传输《视频直播技术详解》
+http://geek.csdn.net/news/detail/100546
+https://blog.qiniu.com/archives/6914
+
+7，网易云-通信与视频
+http://dev.netease.im/
+
+8，RTMP 推流器，RTMP(HLS)秒开播放器，跨平台（Win,IOS,Android）开源代码
+https://github.com/AnyRTC/anyRTC-RTMP-OpenSource
+
+9，基于h5和videojs的视频直播插件
+https://github.com/huangyaoxin/hLive
+
+10，Aliplayer的H5直播使用例子，
+https://github.com/alilmq/h5livedemo
+
+11,web抓娃娃在线直播案例
+http://www.wajiwaji.net/  
+
+12.娃娃机h5演示
+http://wwj.agoraio.cn/
+
+
+
+{
+	推流：
+		把采集阶段封包好的内容传输到服务器的过程。
+
+		协议：
+			RTMP 
+				(Real Time Message Protocol 实时消息传输协议)，基于TCP，包括RTMP基本协议及RTMPT/RTMPS/RTMPE等多种变种。
+
+			HLS
+				Http Live Streaming, 由Apple公司定义的基于HTTP的流媒体实时传输协议。WebRTC是一个支持浏览器进行实时语音、视频对话的开源协议。WebRTC的支持者甚多，Google、Mozilla、Opera推动其成为W3C推荐标准。
+
+
+			WebRTC
+				Web Real-Time Communication (源自网页即时通信),
+
+
+	拉流
+		指服务器已有直播内容，用指定地址进行拉取的过程。
+
+	reference: https://www.zhihu.com/question/26038990	
+}
+
+
