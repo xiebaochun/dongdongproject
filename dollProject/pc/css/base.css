@@ -63,7 +63,7 @@ video { display: block; }
 
 .active { color: #eb7016; }
 
-.wrap { width: 1200px; margin: 0 auto; }
+.wrap { position: relative; width: 1200px; margin: 0 auto; }
 
 .scrolltop0 { -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease; padding-top: 15px; background-color: transparent; border-bottom: none; }
 
