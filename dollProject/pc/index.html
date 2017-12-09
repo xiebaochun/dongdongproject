@@ -25,7 +25,7 @@
 					<img class="logo" src="./images/logo.png">
 					<span class="nav-wrap">
 						<span>咚咚抓娃娃</span>
-						<span>客服热线</span>
+						<span class="service-btn">客服热线</span>
 					</span>
 				</div>
 			</nav>
@@ -34,7 +34,7 @@
 				<div class="content">
 					<span class="title">在线抓娃娃</span><br>
 					<span class="desc">抄底延迟&nbsp;软硬打包&nbsp;即插即用&nbsp;全套解决方案</span><br>
-					<span class="consulting-btn">咨询体验</span>	
+					<span class="consulting-btn service-btn">咨询体验</span>	
 				</div>
 				<div class="qrcode-wrap">
 					<span class="title">微信扫一扫</span><br>
@@ -45,7 +45,7 @@
 		</header>
 		<section>
 			<div class="feature">
-				<div class="wrap" style="width: 1400px;">
+				<div class="wrap" style="width: 1280px;">
 					<img src="./images/superiority1.png">
 					<img src="./images/superiority2.png">
 					<img src="./images/superiority3.png">
@@ -66,8 +66,8 @@
 			<span>备案号 S0612017069084</span>
 		</footer>
 	</div>
-	<div class="_hide dialog">
-		<img class="close-icon" src="./images/quit.png">
+	<div class="hide dialog" id="service-dialog">
+		<img class="close-icon" id="service-close-btn" src="./images/quit.png">
 		<h3>客服热线</h3>
 		<div class="contact"><img src="./images/handset.png">电话：13826299101（陈坤）</div>
 		<div class="contact"><img src="./images/e_mail.png">邮箱：chenkun@vipdong.com</div>
@@ -75,7 +75,16 @@
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			$('.service-btn').click(function(){
+				$('#service-dialog').removeClass('hide').addClass('scale-up').removeClass('scale-down');
+			});
 
+			$('#service-close-btn').click(function(){
+				$('#service-dialog').removeClass('scale-up').addClass('scale-down');
+				setTimeout(function(){
+					$('#service-dialog').addClass('hide')
+				},260);
+			});
 		});
 	</script>
 </body>

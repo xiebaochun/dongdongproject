@@ -1,0 +1,133 @@
+@charset "utf-8";
+html, body, div, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, ul, li, fieldset, form, label, input, legend, table, caption, tbody, tfoot, thead, tr, th, td, textarea, article, aside, audio, canvas, figure, footer, header, mark, menu, nav, section, time, video { font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif; margin: 0; padding: 0; }
+article, aside, figure, footer, header, hgroup, nav, section, blockquote { display: block; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: none; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+ul, ol { list-style-type: none; }
+a, s { text-decoration: none; }
+a { color: #333; }
+a:hover { text-decoration: none; }
+a:focus, input, textarea,select { outline-style: none; }
+img { border: 0; vertical-align: middle; margin: 0; }
+em, i, strong, b, s { font-weight: normal; font-style: normal; }
+ins { text-decoration: underline; }
+del { text-decoration: line-through; }
+mark { background: none; }
+input { vertical-align: middle; vertical-align: top\9; }
+p { word-wrap: break-word }
+table { border-collapse: collapse; border-spacing: 0; }
+input[type="text"], input[type="password"], textarea { border:none; outline-style: none; -webkit-appearance: none; background:none; }
+input::-ms-clear { display: none !important; }
+textarea { resize: none; overflow-y: auto; overflow-x: hidden; }
+body,input,textarea { font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif; }
+body { background: #fff;}
+video{ display: block; }
+
+
+@font-face {
+	font-family: 'iconfont';
+	src: url('../iconfont/iconfont.eot');
+	src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+	url('../iconfont/iconfont.woff') format('woff'),
+	url('../iconfont/iconfont.ttf') format('truetype'),
+	url('../iconfont/iconfont.svg#iconfont') format('svg');
+  }
+
+.iconfont{
+	font-family:"iconfont" !important;
+	font-size:16px;font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+$color:#eb7016;
+$fontSize: 16px;
+$border:  1px solid #e5e5e5;
+%moduleCss {
+	@extend %fr;
+	width: 850px;
+	padding: 5px 0 50px;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+	padding: 0 35px 30px;
+}
+
+%clearfix {
+	zoom:1;
+	&:after {
+	    content: ".";
+	    display: block;
+	    visibility: hidden;
+	    height: 0;
+	    clear: both;
+	}
+}
+%txtHide{
+	font-size: 0;
+	text-indent: -9999em;
+}
+
+%fl{
+	float: left; 
+	display: inline;
+}
+%fr{
+	float:right;
+	display: inline;
+}
+.clearfix{
+	@extend %clearfix;
+}
+@mixin transitionSet($attr,$time){
+	-webkit-transition:$attr $time ease;
+	-moz-transition:$attr $time ease;	
+	-ms-transition: $attr $time ease;	
+	-o-transition:$attr $time ease;
+    transition:$attr $time ease;
+}
+@mixin animationSet($attr,$time){
+	-webkit-animation-name:$attr;         
+	-webkit-animation-duration:$time;  
+	
+	-o-animation-name:$attr;
+	-o-animation-name:$time;
+ 
+	-moz-animation-name:$attr;        
+	-moz-animation-duration:$time;             
+ 
+	-ms-animation-name:$attr;         
+	-ms-animation-duration:$time;          
+ 
+	animation-name:$attr;         
+	animation-duration:$time;          
+
+}
+
+@mixin borderRadius($radiusPx){
+	-webkit-border-radius:$radiusPx;
+	-moz-border-radius:$radiusPx;
+	-o-border-radius:$radiusPx;
+	border-radius:$radiusPx;
+}
+
+@mixin boxShadow($x,$y,$blur,$spread,$color){
+	-webkit-box-shadow: $x $y $blur $spread $color;
+	-moz-box-shadow: $x $y $blur $spread $color;
+	-o-box-shadow: $x $y $blur $spread $color;
+	box-shadow: $x $y $blur $spread $color;
+	
+}
+
+// 公共样式
+
+.hide { height: 0; width: 0; text-indent: -9999em; overflow: hidden; display: none; }
+.active { color: #eb7016}
+.wrap{
+	position: relative;
+	margin: 0 auto;
+}
+
+
+

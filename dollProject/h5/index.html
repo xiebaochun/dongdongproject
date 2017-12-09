@@ -3,32 +3,94 @@
 <head>
 	<title>抓娃娃</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=750, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="email=no">
     <meta name="keywords" content="在线直播抓娃娃">
     <meta name="description" content="在线直播抓娃娃">
-    <link rel="stylesheet" type="text/css" href="./css/reset.css">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
     <style type="text/css">
     	body{background-color: #eee;}
     	.wrap{
-    		padding: 10%;
+    		
     		box-sizing: border-box;
     	}
-    	.banner{
-    		height: 300px;
-    		background-color: #555;
-    	}
     </style>
+    <script type="text/javascript">
+    	// !function(a,b){function h(){var a=e.clientWidth;navigator.appVersion.substring(navigator.appVersion.length-6)<537&&!d&&(document.ready=function(){a=e.clientWidth}),f=window.devicePixelRatio?window.devicePixelRatio:d?a>818?3:a>480?2:1:1,resizeEvent="orientationchange"in window?"orientationchange":"resize",e.dataset.dpr=f,a>1080?a=1080:320>a&&(a=320),g=a/7.5,e.style.fontSize=g+"px"}var g,c=window.navigator.userAgent,d=c.match(/iphone/i),e=a.documentElement,f=1;h(),a.addEventListener&&b.addEventListener(resizeEvent,h,!1)}(document,window);
+    	!new function(){var a=this;a.width=750,a.fontSize=28,a.widthProportion=function(){var b=(document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/a.width;return b>1?1:b},a.changePage=function(){document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+a.widthProportion()*a.fontSize+"px !important")},a.changePage(),window.addEventListener("resize",function(){a.changePage()},!1)};
+    </script>
 </head>
 <body>
 	<div id="app">
 		<div class="wrap">
 			<div class="banner">	
+				<img src="./images/banner.png">
 			</div>
+			<ul class="room-list">
+				<li class="room">
+					<div class="header" style="background-image: url('./images/room_bg1.png')">
+						
+					</div>
+					<div class="footer">
+						<div class="name">
+							睡睡虫
+						</div>
+						<div class="bottom-info">
+							<img class="coin-ico" src="./images/species.png">
+							<span class="price">10币/次</span>
+							<span class="status">空闲中</span>
+						</div>
+					</div>
+				</li>
+				<li class="room">
+					<div class="header" style="background-image: url('./images/room_bg2.png')">
+						
+					</div>
+					<div class="footer">
+						<div class="name">
+							睡睡虫
+						</div>
+						<div class="bottom-info">
+							<img class="coin-ico" src="./images/species.png">
+							<span class="price">10币/次</span>
+							<span class="status used">使用中</span>
+						</div>
+					</div>
+				</li>
+				<li class="room">
+					<div class="header" style="background-image: url('./images/room_bg3.png')">
+						
+					</div>
+					<div class="footer">
+						<div class="name">
+							睡睡虫
+						</div>
+						<div class="bottom-info">
+							<img class="coin-ico" src="./images/species.png">
+							<span class="price">10币/次</span>
+							<span class="status">空闲中</span>
+						</div>
+					</div>
+				</li>
+				<li class="room">
+					<div class="header" style="background-image: url('./images/room_bg4.png')">
+						
+					</div>
+					<div class="footer">
+						<div class="name">
+							睡睡虫
+						</div>
+						<div class="bottom-info">
+							<img class="coin-ico" src="./images/species.png">
+							<span class="price">10币/次</span>
+							<span class="status used">使用中</span>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 	<script type="text/javascript" src="./js/zepto.min.js"></script>

@@ -1,0 +1,15 @@
+{
+    "link": "",
+    "css_version": "v1",
+    "js_version": "v1",
+    "task": {
+        "checkTitle": true,
+        "checkH1": true,
+        "checkTongjiJS": true,
+        "checkDescKeyword": true, 
+        "checkCharset": true,
+        "checkLang": true,
+        "checkTopbar": true
+    }
+}
+

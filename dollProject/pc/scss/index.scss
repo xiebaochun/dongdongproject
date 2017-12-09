@@ -18,6 +18,7 @@ header{
 			}
 			span{
 				margin-right:  90px;
+				cursor: pointer;
 			}	
 		}
 	}
@@ -44,7 +45,7 @@ header{
 			width: 120px;
 			margin-top: 114px;
 			text-align: center;
-			color: #666;
+			color: #feb433;
 			border-radius: 40px;
 			background-color: #fff;
 			cursor: pointer;
@@ -56,10 +57,11 @@ header{
 		bottom: 16px;
 		.title{
 			text-align: justify;
-			font-size: 35px;
+			font-size: 34px;
 		}
 		.sub-title{
-			font-size: 28px;
+			font-weight: 500;
+			font-size: 27px;
 		}
 		.qrcode{
 			display: block;
@@ -76,7 +78,7 @@ header{
 	padding: 40px 0;
 	background-color: #f5f5f5;
 	img{
-		margin-left: 70px;
+		margin-right: 70px;
 	}
 }
 
@@ -122,20 +124,62 @@ footer{
 	.close-icon{
 		display: inline-block;
 		position: absolute;
-		right: 5px;
-		top: 5px;
+		right: 10px;
+		top: 10px;
+		cursor: pointer;
 	}
 
 	h3{
-		margin-top: 20px;
-		font-size: 32px;
+		margin-top: 25px;
+		margin-bottom: 40px;
+		font-size: 34px;
 		text-align: center;
+		color: #fb9924;
 	}
 
 	.contact{
-		margin-top: 40px;
-		line-height: 26px;
-		font-size: 20px;
-		padding-left: 100px;
+		
+		line-height: 46px;
+		font-size: 26px;
+		padding-left: 80px;
 	}
 }
+
+@media screen and (max-width: 1300px) {
+	.feature{
+		padding: 40px 0;
+		background-color: #f5f5f5;
+		img{
+			height: 66px;
+			margin-left: 30px;
+		}
+	}
+}
+
+.scale-up{
+	animation: scaleUp 0.3s;
+}
+
+@keyframes scaleUp{
+	0%{
+		transform: scale(0);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+
+.scale-down{
+	animation: scaleDown 0.3s;
+}
+
+@keyframes scaleDown{
+	0%{
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(0);
+	}
+}
+
+
