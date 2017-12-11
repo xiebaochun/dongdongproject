@@ -8,4 +8,22 @@
 
 ## MQ服务器
 	http://39.108.65.192:8161
-	admin/admin
+	#admin/admin
+	admin/ilovevipdongdong
+	user/ilovevipdongdong
+
+	Install dir: usr/local/apache-activemq-5.15.2
+
+	cd [activemq_install_dir]/bin
+	./activemq satrt | stop
+
+	ActiveMQ's default port is 61616
+	netstat -nl|grep 61616
+
+
+# 阿里服务器
+	http://39.108.65.192
+	root/RQ1a[-!&m50.@.cA[mH,*g
+
+# nginx 配置
+	/etc/nginx/conf.d/*.conf
