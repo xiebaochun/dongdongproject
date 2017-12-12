@@ -196,6 +196,8 @@ header nav .nav-wrap { float: right; line-height: 50px; }
 
 header nav .nav-wrap span { display: inline-block; font-size: 16px; }
 
+header nav .nav-wrap span a { color: #fff; }
+
 header nav .nav-wrap span { margin-right: 90px; cursor: pointer; }
 
 header .mobile { display: block; position: absolute; left: 127px; bottom: 0; }
