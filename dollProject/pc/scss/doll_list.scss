@@ -1,0 +1,73 @@
+html,body{margin:0;padding:0;}
+body{
+	background-color: #eee;
+}
+header{
+	height: 300px;
+	background-size: cover;
+	background-position: center;
+}
+.banner{
+	margin: 0;
+	width: 100%;
+}
+.wrap{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.room-list{
+	font-size: 0;
+	.room{
+		display: inline-block;
+		width: 250px;
+		margin-left: 0.95rem;
+		margin-top: 0.95rem;
+		font-size: 1rem;
+		border-radius: 0.3rem;
+		overflow: hidden;
+		cursor: pointer;
+		.header{
+			width: 100%;
+			height: 12rem;
+			background-size: cover;
+
+		}
+		.footer{
+			padding: 0.5rem;
+			background-color: #fff;
+			box-sizing: border-box;
+			.name{
+				padding: 0.3rem 0;
+			}
+			.bottom-info{
+				padding: 0.3rem 0;
+				.coin-ico{
+					width: 1.2rem;
+				}
+				.status{
+					float:right;
+					padding: 0.2rem 0.5rem;
+					line-height: 1rem;
+					font-size: 0.8rem;
+					border-radius: .3rem;
+					background-color: #34f39c;
+					color: #fff;
+				}
+				.used{
+					background-color: #feb133;
+				}
+			}
+		}
+	}
+}
+footer{
+	padding: 40px 0;
+	background-color: #303642;
+	line-height: 26px;
+	text-align: center;
+	span{
+		font-size: 12px;
+		color: #fff;
+	}
+}
