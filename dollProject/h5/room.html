@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>抓娃娃</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="keywords" content="在线直播抓娃娃">
+    <meta name="description" content="在线直播抓娃娃">
+    <link rel="stylesheet" type="text/css" href="./css/room.css">
+    <style type="text/css">
+    	body{background-color: #eee;}
+    	.wrap{
+    		
+    		box-sizing: border-box;
+    	}
+    </style>
+    <script type="text/javascript">
+    	// !function(a,b){function h(){var a=e.clientWidth;navigator.appVersion.substring(navigator.appVersion.length-6)<537&&!d&&(document.ready=function(){a=e.clientWidth}),f=window.devicePixelRatio?window.devicePixelRatio:d?a>818?3:a>480?2:1:1,resizeEvent="orientationchange"in window?"orientationchange":"resize",e.dataset.dpr=f,a>1080?a=1080:320>a&&(a=320),g=a/7.5,e.style.fontSize=g+"px"}var g,c=window.navigator.userAgent,d=c.match(/iphone/i),e=a.documentElement,f=1;h(),a.addEventListener&&b.addEventListener(resizeEvent,h,!1)}(document,window);
+    	!new function(){var a=this;a.width=750,a.fontSize=28,a.widthProportion=function(){var b=(document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/a.width;return b>1?1:b},a.changePage=function(){document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+a.widthProportion()*a.fontSize+"px !important")},a.changePage(),window.addEventListener("resize",function(){a.changePage()},!1)};
+    </script>
+</head>
+<body>
+	<div id="app">
+		<div class="wrap">
+			<label>队列名称：</label><br>
+			<input id="queue-name" type="text" name="queue_name"><br>
+			<label>发送的数据：</label><br>
+			<input id="send-data" type="text" name="end_data"><br>
+			<button id="send-btn">发送</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/zepto.min.js"></script>
+	<script type="text/javascript" src="./js/vue.min.js"></script>
+	<script type="text/javascript" src="./js/mqttws31.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var //socket=io.connect('http://39.108.65.192/:61614'),//与服务器进行连接
+		        sendData=$('#send-data').val(),
+		        sendBtn=document.getElementById('send-btn');
+
+		    var host = 'localhost',
+		    	port = 61614,
+		    	clientId = 'myWeb',
+		    	destination = "test";
+
+
+		    window.client = new Messaging.Client(host, Number(port), clientId);
+
+		    client.onMessageArrived = function(e){
+		    	console.log(e.payloadString);
+		    };
+		    client.connect({
+		    	onSuccess: function() {
+		    		client.subscribe(destination);
+		    		console.log('ok');
+		    	},
+		    	onFailure: function() {
+		    		console.log('dsd');
+		    	}
+		    });
+
+		    
+		    var name = $('#queue-name').val();
+
+		    sendBtn.onclick=function(){
+		    	var message = new Messaging.Message(sendData);
+		    	message.destinationName = destination;
+		    	client.send(message);
+		    }
+
+		    // leave.onclick=function(){
+		    //     // window.location.href="about:blank";
+		    //     // window.close();
+		    //     // socket.emit('leave', 'leave');
+		    // }
+
+		    //接收来自服务端的信息事件c_hi
+		    // socket.on('c_hi',function(msg){
+		    //     alert(msg);
+		    // })
+			// var app = new Vue({
+			// 	el: 'app',
+			// 	data: {
+
+			// 	},
+			// 	created: function(){
+			// 		self = this;
+			// 		self.init();
+			// 	},
+			// 	methods: {
+			// 		init: function(){
+			// 			console.log('sdbskd');
+			// 		}
+			// 	}
+			// });
+		});
+	</script>
+</body>
+</html>
