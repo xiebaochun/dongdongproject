@@ -1,0 +1,104 @@
+#main {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 12px;
+    font-family: arial;
+    display: flex;
+    flex-flow: column;
+    z-index: 1;
+}
+.full {
+    flex: 2 2;
+}
+.row {
+    padding: 5px;
+    display: flex;
+    flex-flow: row;
+}
+.row >* {
+    text-align: right;
+    display: inline-block;
+}
+.key {
+    margin: auto 4px auto 7px;
+    font-weight: bold;
+}
+.name {
+    margin: auto 10px;
+    width: 100px;
+    font-weight: bold;
+}
+.value {
+    position: relative;
+    flex: 2 2;
+}
+input,
+textarea {
+    padding: 2px 4px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 2px;
+    border: 1px solid #999;
+    font-family: monospace;
+    text-align: left;
+}
+input[type=button] {
+    margin-left: 10px;
+    width: auto;
+    background-color: #ffc;
+}
+input[type=button]:disabled {
+    background-color: #eee;
+}
+#history {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    overflow-y: scroll;
+}
+#history >* {
+    margin-bottom: 2px;
+    padding: 2px 5px;
+    display: flex;
+}
+#history >[hide] {
+    display: none;
+}
+#history f {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    display: inline;
+}
+.time {
+    padding-left: 7px;
+    font-weight: bold;
+    text-align: right;
+}
+.text {
+    flex: 2 2;
+}
+.ok {
+    background-color: #efe;
+    color: #090;
+}
+.log {
+    background-color: #eee;
+    color: #999;
+}
+.info {
+    background-color: #eef;
+    color: #009;
+}
+.warn {
+    background-color: #ffe;
+    color: #990;
+}
+.error {
+    background-color: #fee;
+    color: #900;
+}

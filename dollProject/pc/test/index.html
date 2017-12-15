@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mosquitto Client</title>
+    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <script type="text/javascript" src="js/mqttws31.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" tytpe="text/css" href="css/style.css" />
+</head>
+
+<body>
+    <div id="main">
+        <div class="row">
+            <span class="key">Host:</span>
+            <span class="value">
+                <input id="host" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onchange="connect();" />
+            </span>
+            <span class="key">Port:</span>
+            <span class="value" style="flex: 1 1;">
+                <input id="port" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onchange="connect();" />
+            </span>
+            <span class="key">Username:</span>
+            <span class="value">
+                <input id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onchange="connect();" />
+            </span>
+            <span class="key">Password:</span>
+            <span class="value">
+                <input id="password" type="password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onchange="connect();" />
+            </span>
+        </div>
+        <div class="row">
+            <span class="name">Client ID</span>
+            <span class="value">
+                <input id="client_id" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onchange="connect();" />
+            </span>
+        </div>
+        <div class="row">
+            <span class="name">Listen Topic</span>
+            <span class="value">
+                <input id="listen_channel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onchange="
+                    if (this._prevValue) {
+                        mqtt.removeChannel(this._prevValue);
+                    }
+                    let value = this.value;
+                    this._prevValue = value;
+                    mqtt.addChannel(value);
+                " />
+            </span>
+        </div>
+        <div class="row">
+            <span class="name">Send Topic</span>
+            <span class="value">
+                <input id="send_channel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onchange="
+                    let prefix = (this.value ?'remove' :'set');
+                    document.getElementById('message')[prefix+'Attribute']('disabled', '');
+                    document.getElementById('send')[prefix+'Attribute']('disabled', '');
+                " />
+            </span>
+        </div>
+        <div class="row">
+            <span class="name">Message</span>
+            <span class="value">
+                <textarea id="message" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="3" disabled></textarea>
+            </span>
+        </div>
+        <div class="row">
+            <span class="value">
+                <input type="button" id="send" disabled onclick="
+                    mqtt.send(
+                        document.getElementById('send_channel').value,
+                        document.getElementById('message').value
+                    );
+                " value="Send" />
+            </span>
+        </div>
+        <div class="row full">
+            <div id="history"></div>
+        </div>
+        <div class="row">
+            <span class="name">Filter History</span>
+            <span class="value">
+                <input id="filter" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" oninput="filter();" />
+            </span>
+            <span>
+                <input type="button" onclick="history.clear();" value="Clear" />
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>
