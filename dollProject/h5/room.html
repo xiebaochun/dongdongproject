@@ -73,6 +73,7 @@
 		    window.client = new Messaging.Client(host, Number(port), clientId);
 
 		    client.onMessageArrived = function(e){
+		    	console.log(e);
 		    	console.log(e.payloadString);
 		    };
 		    client.connect({
