@@ -1,6 +1,6 @@
 (function() {
 
-var history = {
+window.history = {
     _id: 'history',
     _list: [],
     _wrap: function(type, text) {
@@ -55,7 +55,7 @@ var history = {
         this._add(this._wrap('error', e));
     }
 };
-var mqtt = {
+window.mqtt = {
     max_retry: 3,
     connected: function() {
         if (!this._client) {
