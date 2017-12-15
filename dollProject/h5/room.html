@@ -38,6 +38,28 @@
 	<script type="text/javascript" src="./js/mqttws31.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			//var socket = new WebSocket('ws://39.108.65.192:61614'); 
+
+			// 打开Socket 
+			// socket.onopen = function(event) { 
+			// 	console.log('opend');
+			//   // 发送一个初始化消息
+			//   socket.send('I am the client and I\'m listening!'); 
+
+			//   // 监听消息
+			//   socket.onmessage = function(event) { 
+			//     console.log('Client received a message',event); 
+			//   }; 
+
+			//   // 监听Socket的关闭
+			//   socket.onclose = function(event) { 
+			//     console.log('Client notified socket has closed',event); 
+			//   }; 
+
+			//   // 关闭Socket.... 
+			//   //socket.close() 
+			// };
+			// return;
 			var //socket=io.connect('http://39.108.65.192/:61614'),//与服务器进行连接
 		        sendData=$('#send-data').val(),
 		        sendBtn=document.getElementById('send-btn');
