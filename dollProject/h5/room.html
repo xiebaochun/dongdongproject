@@ -56,10 +56,13 @@
 			<input id="send-data" type="text" name="end_data" value="2"><br>
 			<button class="send-btn" id="send-btn">发送</button>
 		</div>
+		<!-- <div class="jsmpeg" data-url="wss://h5gw-jiangmen-ctel-3.agoraio.cn:8100/?camera…nnel=咚咚抓娃娃&appid=b6e4b9bdf37a41428a48696d8e057490"></div> -->
+		<canvas id="jsmpeg-player"></canvas>
 	</div>
 	<script type="text/javascript" src="./js/zepto.min.js"></script>
 	<script type="text/javascript" src="./js/vue.min.js"></script>
 	<script type="text/javascript" src="./js/mqttws31.js"></script>
+	<script type="text/javascript" src="./js/jsmpeg.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			//var socket = new WebSocket('ws://39.108.65.192:61614'); 
@@ -130,11 +133,66 @@
 		    			console.log('dsd');
 		    		}
 		    	});
-
-		    	
-		    	
 		    }
 
+
+		    var app = new Vue({
+		    	ele: '#app',
+		    	data: {
+		    		player: null,
+		    	},
+		    	created: function() {
+		    		self = this;
+		    		this.init();
+		    	},
+		    	methods: {
+		    		init: function() {
+		    			console.log('init');
+		    			this.getDomain();
+		    		},
+		    		getDomain: function() {
+		    			$.ajax({
+		    			    url: "https://h5cs-1.agoraio.cn:7668/geth5gw/jsonp",
+		    			    type: "POST",
+		    			    headers: {
+		    			        "Content-type": "application/json; charset=utf-8"
+		    			    },
+		    			    data: JSON.stringify({
+		    			        key: 'b6e4b9bdf37a41428a48696d8e057490',
+		    			        cname: '咚咚抓娃娃'
+		    			    }),
+		    			    success: function(ret) {
+		    			    	console.log(ret);
+		    			    	self.postMachine(ret);
+		    			    }
+		    			})
+		    		},
+		    		postMachine: function(ret) {
+		    			$.ajax({
+		    			    url: "https://" + ret.gateway_addr[0] + "/v1/machine",
+		    			    type: "POST",
+		    			    data: {
+		    			        appid: 'b6e4b9bdf37a41428a48696d8e057490',
+		    			        channel: '咚咚抓娃娃',
+		    			        // key: key
+		    			        //可选，若你没有开启动态key则不需要传，开启的话需要传你自己后台计算的动态key
+		    			        uid1: 1,
+		    			        //可选，若不传则默认为1，请确认这个uid与你推流的uid一致，不然无法看到视频流
+		    			        uid2: 2,
+		    			        //可选，若不传则默认为2，请确认这个uid与你推流的uid一致，不然无法看到视频流
+		    			    },
+		    			    success: function(ret) {
+		    			    	console.log(ret);
+		    			    	self.initPlayer(ret);
+		    			    }
+		    			})
+		    		},
+		    		initPlayer: function(ret) {
+		    			console.log(ret.cameras.main);
+		    			//var player = new JSMpeg.Player(ret.cameras.main);
+		    		}
+		    	}
+		    });
 		    // leave.onclick=function(){
 		    //     // window.location.href="about:blank";
 		    //     // window.close();
