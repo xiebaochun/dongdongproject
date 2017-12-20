@@ -39,6 +39,13 @@
     		font-size: 14px;
     		outline: none;
     	}
+    	.btn{
+    		display: block;
+    		background-color: #333;
+    		color: #fff;
+    		line-height: 40px;
+    		text-align: center;
+    	}
     </style>
     <script type="text/javascript">
     	// !function(a,b){function h(){var a=e.clientWidth;navigator.appVersion.substring(navigator.appVersion.length-6)<537&&!d&&(document.ready=function(){a=e.clientWidth}),f=window.devicePixelRatio?window.devicePixelRatio:d?a>818?3:a>480?2:1:1,resizeEvent="orientationchange"in window?"orientationchange":"resize",e.dataset.dpr=f,a>1080?a=1080:320>a&&(a=320),g=a/7.5,e.style.fontSize=g+"px"}var g,c=window.navigator.userAgent,d=c.match(/iphone/i),e=a.documentElement,f=1;h(),a.addEventListener&&b.addEventListener(resizeEvent,h,!1)}(document,window);
@@ -57,7 +64,14 @@
 			<button class="send-btn" id="send-btn">发送</button>
 		</div>
 		<!-- <div class="jsmpeg" data-url="wss://h5gw-jiangmen-ctel-3.agoraio.cn:8100/?camera…nnel=咚咚抓娃娃&appid=b6e4b9bdf37a41428a48696d8e057490"></div> -->
-		<canvas id="jsmpeg-player"></canvas>
+		<div class="main-box" style="display: flex;justify-content: center">
+            <!--请注意这里的id需要与js中的一致-->
+            <canvas id="jsmpeg-player"></canvas>
+            <canvas id="jsmpeg-player2"></canvas>
+        </div>
+        <div>
+        	<button class="btn" @click="switchCamera()">切换摄像头</button>
+        </div>
 	</div>
 	<script type="text/javascript" src="./js/zepto.min.js"></script>
 	<script type="text/javascript" src="./js/vue.min.js"></script>
@@ -173,7 +187,7 @@
 		    			    type: "POST",
 		    			    data: {
 		    			        appid: 'b6e4b9bdf37a41428a48696d8e057490',
-		    			        channel: '咚咚抓娃娃',
+		    			        channel: 'vipdong',//'咚咚抓娃娃',
 		    			        // key: key
 		    			        //可选，若你没有开启动态key则不需要传，开启的话需要传你自己后台计算的动态key
 		    			        uid1: 1,
@@ -187,12 +201,104 @@
 		    			    }
 		    			})
 		    		},
-		    		initPlayer: function(ret) {
-		    			console.log(ret.cameras.main);
-		    			//var player = new JSMpeg.Player(ret.cameras.main);
+		    		initPlayer: function(machine) {
+		    			// var canvas = document.getElementById('jsmpeg-player');
+		    			// console.log(ret.cameras.main);
+		    			// var player = new JSMpeg.Player(ret.cameras.main, {canvas: canvas});
+		    			console.log(machine);
+		    			if (!machine || !machine.name) {
+			                alert("no machine found");
+			                return;
+			            }
+			            if (machine.video_rotation === 90) {
+			                $("#jsmpeg-player").addClass("rotation-90");
+			                $("#jsmpeg-player2").addClass("rotation-90");
+			            }
+			            if (machine.stream_method === 0) {
+			                alert("image streaming is not yet supported");
+			            } else {
+			                cameras = machine.cameras;
+			                camera = machine.cameras.main;
+			                video_player.play(camera, 0);
+			            }
+		    		},
+		    		switchCamera: function(){
+		    			video_player.switchCamera();
 		    		}
 		    	}
 		    });
+
+
+		    // 建立播放器
+		    function Player() {
+		        var player = this;
+		        this.cameras = null;
+		        this.camera = null;
+		        this.player1 = null;
+		        this.player2 = null;
+		        this.switching = false;
+		        this.play = function (url, position) {
+		            if (player.switching) {
+		                console.log("switching...");
+		                return;
+		            }
+		            var canvas = document.getElementById('jsmpeg-player');
+		            var canvas2 = document.getElementById('jsmpeg-player2');
+		            player.switching = true;
+		            var switching_time = 1000;
+		            if (position === 0) {
+		                //front
+		                if(!player.player1){
+		                    player.player1 = new JSMpeg.Player(url, { canvas: canvas });
+		                    setTimeout(function () {
+		                        $(canvas2).hide();
+		                        $(canvas).show();
+		                        player.player2 && player.player2.destroy();
+		                        player.player2 = null;
+		                        player.switching = false;
+		                    }, switching_time);
+		                } else {
+		                    player.player1 && player.player1.destroy();
+		                    player.player1 = null;
+		                    player.player1 = new JSMpeg.Player(url, { canvas: canvas });
+		                    player.switching = false;
+		                }
+		            } else {
+		                //side
+		                if(!player.player2){
+		                    player.player2 = new JSMpeg.Player(url, { canvas: canvas2 });
+		                    setTimeout(function () {
+		                        $(canvas).hide();
+		                        $(canvas2).show();
+		                        player.player1 && player.player1.destroy();
+		                        player.player1 = null;
+		                        player.switching = false;
+		                    }, switching_time);
+		                } else {
+		                    player.player2 && player.player2.destroy();
+		                    player.player2 = null;
+		                    player.player2 = new JSMpeg.Player(url, { canvas: canvas });
+		                    player.switching = false;
+		                }
+		            }
+		        }
+		        this.switchCamera = function () {
+		            if (camera === cameras.main) {
+		                camera = cameras.sub;
+		                player.play(camera, 1);
+		            } else {
+		                camera = cameras.main;
+		                player.play(camera, 0);
+		            }
+		        }
+		    }
+		    window.video_player = new Player();
+
+
+		    function Controller() {
+		    	var controller = this;
+		    }
+
 		    // leave.onclick=function(){
 		    //     // window.location.href="about:blank";
 		    //     // window.close();
